@@ -1,0 +1,99 @@
+main {
+  // height: calc(100vh - 0.2667rem);
+  .main {
+    .main-header {
+      background-image: url('http://hlgw.tianzongnet.com/static/home/images/pageimg/center.png');
+      background-repeat: round;
+      height: 0.5333rem;
+    }
+    .main-news {
+      img {
+        width: 0.8rem;
+      }
+      .news-title {
+        display: flex;
+        justify-content: center;
+      }
+      .news-content {
+        .swiper {
+          width: 0.8rem;
+          height: 0.48rem;
+          .swiper-wrapper {
+            width: 0.8rem;
+            height: 0.48rem;
+            .swiper-slide {
+              width: 0.8rem;
+              height: 0.48rem;
+              background-image: url(../image/新闻资讯面板.png);
+              background-repeat: round;
+              position: relative;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              img {
+                position: absolute;
+                width: 0.672rem;
+                height: 0.4rem;
+              }
+            }
+          }
+          .swiper-pagination {
+            position: absolute;
+            bottom: 0;
+          }
+        }
+        .news-tabbar {
+          height: 0.1333rem;
+          display: flex;
+          justify-content: space-evenly;
+          align-items: center;
+          :hover {
+            background-color: rgb(242, 97, 0);
+            color: white !important;
+            border: 1px solid rgb(242, 97, 0) !important;
+          }
+          .tabs {
+            width: 0.1333rem;
+            height: 0.0533rem;
+            color: rgb(242, 97, 0);
+            border: 1px solid rgb(131, 77, 53);
+            border-radius: 0.0267rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            p {
+              font-size: 0.032rem;
+            }
+          }
+        }
+        .news-tabbar-text { 
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          margin: 20px 0;
+          // border-bottom: 1px dashed rgb(232, 152, 110);
+          .news-tabbar-text-box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px dashed #e8986e;
+            width: 0.9rem;
+            p {
+              color: rgb(232, 152, 110);
+              font-size: 0.032rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.swiper-pagination-bullet {
+  background-color: #e97a35;
+}
+.swiper-pagination-bullet-active {
+  background-color: #e97a35;
+  width: 0.08rem;
+  border-radius: 0.0267rem;
+}

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
+    />
+
+    <title>Document</title>
+  </head>
+  <script src="./js/vue.min.js"></script>
+  <script src="./js/swiper/swiper-bundle.min.js"></script>
+  <script src="./dist/bundle.js"></script>
+  <link rel="stylesheet" href="./css/test.css" />
+  <script></script>
+  <body>
+    <div id="app">
+      <header>
+        <div class="header">
+          <div class="header-imageBox">
+            <div class="imageBox-imageBox">
+              <img
+                class="imageBox-image"
+                src="./image/profile.png"
+                alt="logo"
+              />
+            </div>
+
+            <div class="header-imageBox-text">
+              <div class="imageBox-topText">幻灵修仙传</div>
+              <div class="imageBox-bottomText">全新回合梦幻修仙手游</div>
+            </div>
+            <div class="imageBox-16age">
+              <img
+                class="imageBox-16age-image"
+                src="./image/适龄提示.png"
+                alt="适龄提示"
+              />
+            </div>
+          </div>
+          <div class="header-right">
+            <div class="header-right-btn">
+              <span>下载游戏</span>
+              <img src="./image/矩形 863 拷贝(1).png" alt="" />
+            </div>
+            <div class="header-right-btn">
+              <span>领取礼包</span>
+              <img src="./image/矩形 863 拷贝(1).png" alt="" />
+            </div>
+          </div>
+        </div>
+        <div class="header-tabbar">
+          <div
+            class="header-tabbarItems"
+            v-for="(index,tabs) in tabbarItems"
+            :key="index"
+          >
+            <img :src="tabs.imgPath" alt="" />
+            <p>{{tabs.text}}</p>
+          </div>
+        </div>
+      </header>
+      <main>
+        <div class="main">
+          <div class="main-header"></div>
+          <div class="main-news">
+            <div class="news-title">
+              <img src="./image/新闻资讯标题 .png" alt="" />
+            </div>
+            <div class="news-content">
+              <div class="swiper">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <img src="./image/形状 9.png" alt="" />
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="./image/形状 9.png" alt="" />
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="./image/形状 9.png" alt="" />
+                  </div>
+                </div>
+                <!-- 如果需要分页器 -->
+                <div class="swiper-pagination"></div>
+
+                <!-- 如果需要导航按钮 -->
+                <!-- <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div> -->
+              </div>
+
+              <div class="news-tabbar">
+                <template v-for="news in newsTabbar">
+                  <div class="tabs" @click="changeTab(news.title,news.content)">
+                    <p>{{news.title}}</p>
+                  </div>
+                </template>
+              </div>
+
+              <div class="news-tabbar-text">
+                <template
+                  v-for="newsContent in activeContent"
+                  :key="newsContent.id"
+                >
+                  <div class="news-tabbar-text-box">
+                    <p>{{newsContent.text}}</p>
+                    <p>{{newsContent.date}}</p>
+                  </div>
+                </template>
+              </div>
+            </div>
+          </div>
+          <div class="main-games"></div>
+          <div class="main-hear"></div>
+        </div>
+      </main>
+      <footer></footer>
+    </div>
+  </body>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        message: 'Hello Vue.js!',
+        activeTabs: '最新',
+        activeContent: [
+          {
+            text: '1-1《幻灵修仙传》开启ios下载...',
+            date: '02-16',
+            id: 1,
+          },
+          {
+            text: '1-2《幻灵修仙传》开启ios下载...',
+            date: '02-16',
+            id: 2,
+          },
+          {
+            text: '1-3《幻灵修仙传》开启ios下载...',
+            date: '02-16',
+            id: 3,
+          },
+          {
+            text: '1-4《幻灵修仙传》开启ios下载...',
+            date: '02-16',
+            id: 4,
+          },
+          {
+            text: '1-5《幻灵修仙传》开启ios下载...',
+            date: '02-16',
+            id: 5,
+          },
+        ],
+        tabbarItems: [
+          {
+            imgPath: './image/img_btn_xunxiange02.png',
+            text: '首页',
+          },
+          {
+            imgPath: './image/图鉴.png',
+            text: '资讯',
+          },
+          {
+            imgPath: './image/图鉴.png',
+            text: '图鉴',
+          },
+          {
+            imgPath: './image/特色.png',
+            text: '游戏特色',
+          },
+          {
+            imgPath: './image/视听.png',
+            text: '视听中心',
+          },
+          {
+            imgPath: './image/玩家支持.png',
+            text: '玩家支持',
+          },
+        ],
+        newsTabbar: [
+          {
+            title: '最新',
+            content: [
+              {
+                text: '1-1《幻灵修仙传》开启ios下载...',
+                date: '02-16',
+                id: 1,
+              },
+              {
+                text: '1-2《幻灵修仙传》开启ios下载...',
+                date: '02-16',
+                id: 2,
+              },
+              {
+                text: '1-3《幻灵修仙传》开启ios下载...',
+                date: '02-16',
+                id: 3,
+              },
+              {
+                text: '1-4《幻灵修仙传》开启ios下载...',
+                date: '02-16',
+                id: 4,
+              },
+              {
+                text: '1-5《幻灵修仙传》开启ios下载...',
+                date: '02-16',
+                id: 5,
+              },
+            ],
+          },
+          {
+            title: '新闻',
+            content: [
+              {
+                text: '2-1《幻灵修仙传》开启ios下载...',
+                date: '02-16',
+                id: 1,
+              },
+              {
+                text: '2-2《幻灵修仙传》开启ios下载...',
+                date: '02-16',
+                id: 2,
+              },
+              {
+                text: '2-3《幻灵修仙传》开启ios下载...',
+                date: '02-16',
+                id: 3,
+              },
+              {
+                text: '2-4《幻灵修仙传》开启ios下载...',
+                date: '02-16',
+                id: 4,
+              },
+              {
+                text: '2-5《幻灵修仙传》开启ios下载...',
+                date: '02-16',
+                id: 5,
+              },
+            ],
+          },
+          {
+            title: '公告',
+            content: [
+              {
+                text: '3-1《幻灵修仙传》开启ios下载...',
+                date: '02-16',
+                id: 1,
+              },
+              {
+                text: '3-2《幻灵修仙传》开启ios下载...',
+                date: '02-16',
+                id: 2,
+              },
+              {
+                text: '3-3《幻灵修仙传》开启ios下载...',
+                date: '02-16',
+                id: 3,
+              },
+              {
+                text: '3-4《幻灵修仙传》开启ios下载...',
+                date: '02-16',
+                id: 4,
+              },
+              {
+                text: '3-5《幻灵修仙传》开启ios下载...',
+                date: '02-16',
+                id: 5,
+              },
+            ],
+          },
+          {
+            title: '攻略',
+            content: [
+              {
+                text: '4-1《幻灵修仙传》开启ios下载...',
+                date: '02-16',
+                id: 1,
+              },
+              {
+                text: '4-2《幻灵修仙传》开启ios下载...',
+                date: '02-16',
+                id: 2,
+              },
+              {
+                text: '4-3《幻灵修仙传》开启ios下载...',
+                date: '02-16',
+                id: 3,
+              },
+              {
+                text: '4-4《幻灵修仙传》开启ios下载...',
+                date: '02-16',
+                id: 4,
+              },
+              {
+                text: '4-5《幻灵修仙传》开启ios下载...',
+                date: '02-16',
+                id: 5,
+              },
+            ],
+          },
+        ],
+      },
+      methods: {
+        changeTab(tabs, contents) {
+          this.activeTabs = tabs
+          this.activeContent = contents
+        },
+      },
+    })
+  </script>
+  <script>
+    var mySwiper = new Swiper('.swiper', {
+      loop: true,
+      pagination: {
+        el: '.swiper-pagination',
+      },
+      on: {
+        init: function () {
+          console.log('Swiper initialized')
+          console.log(this)
+        },
+      },
+    })
+  </script>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="demo" style="width: 500px; height: 500px"></div>
+    <button onclick="a()">切换</button>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/svgaplayerweb@2.3.1/build/svga.min.js"></script>
+  <script>
+    var player = new SVGA.Player('#demo')
+    var parser = new SVGA.Parser('#demo')
+    var arr = []
+    for(let i =1; i<= 14;i++){
+      arr.push(`./pet130${i}_s.svga`)
+    }
+    
+  
+svga = 'pet1301_s.svga'
+    parser.load(svga, function (item) {
+      player.setContentMode()
+      player.setVideoItem(item)
+      player.startAnimation()
+    })
+    var flag = 0;
+    function a() {
+// arr[number]
+// debugger
+flag++
+      if(flag>=14){
+        flag = 0
+      }
+      svga = arr[flag]
+        // svga == './pet1302_s.svga' ? './pet1303_s.svga' : './pet1302_s.svga'
+      parser.load(svga, function (item) {
+        player.setVideoItem(item)
+        player.startAnimation()
+      })
+    }
+  </script>
+</html>
