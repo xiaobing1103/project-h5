@@ -11,7 +11,7 @@
     <title>Document</title>
   </head>
   <script src="./js/vue.min.js"></script>
-  <script src="./js/swiper/swiper-bundle.min.js"></script>
+  <script src="./js/swiper-bundle.min.js"></script>
   <script src="./dist/bundle.js"></script>
   <link rel="stylesheet" href="./css/test.css" />
   <script></script>
@@ -82,17 +82,16 @@
                     <img src="./image/形状 9.png" alt="" />
                   </div>
                 </div>
-                <!-- 如果需要分页器 -->
                 <div class="swiper-pagination"></div>
-
-                <!-- 如果需要导航按钮 -->
-                <!-- <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div> -->
               </div>
 
               <div class="news-tabbar">
                 <template v-for="news in newsTabbar">
-                  <div class="tabs" @click="changeTab(news.title,news.content)">
+                  <div
+                    class="tabs"
+                    @click="changeTab(news)"
+                    :class="{ 'active': news.active }"
+                  >
                     <p>{{news.title}}</p>
                   </div>
                 </template>
@@ -111,7 +110,84 @@
               </div>
             </div>
           </div>
-          <div class="main-games"></div>
+          <div class="main-games">
+            <div class="games-title">
+              <img src="./image/游戏图鉴标题.png" alt="" />
+            </div>
+            <div class="games-content">
+              <template v-for="(index,gamesTab) in gamesContent" :key="index">
+                <div class="games-content-imgage" v-ref:myImage>
+                  <img
+                    @click="changeGamesTab(gamesTab)"
+                    :src="gamesTab.imageActive ? gamesTab.imageActivePath : gamesTab.imagePath"
+                    :key="index"
+                    alt=""
+                  />
+                </div>
+              </template>
+            </div>
+            <div class="games-content-Character">
+              <template
+                v-for="(index,Character) in activeAllCharacter"
+                :key="index"
+              >
+                <div class="Character-box" @click="changeCharacter(Character)">
+                  <img
+                    :src="Character.activePetText? './image/矩形 863 拷贝.png': './image/矩形 863 拷贝(1).png'"
+                    alt=""
+                  />
+                  <p :class="{ 'CharacterActive': Character.activePetText }">
+                    {{Character.petText}}
+                  </p>
+                </div>
+              </template>
+            </div>
+            <div class="Character-contentBox">
+              <template v-for="pets in gamesCharacter">
+                <div
+                  class="Character-contentBox-left"
+                  v-if="pets.petId === CharactersId"
+                >
+                  <div class="contentBox-left-top">
+                    <div class="contentBox-left-image">
+                      <img src="./image/宠物图标.png" alt="" />
+                      <p>{{pets.title}}</p>
+                    </div>
+                  </div>
+                  <div class="contentBox-left-middle">
+                    <div class="contentBox-left-middle-imageBox">
+                      <img src="./image/形状 890 拷贝.png" alt="" />
+                      <p>{{pets.introduce}}</p>
+                      <img src="./image/形状 890.png" alt="" />
+                    </div>
+
+                    <pre>{{pets.introduceText}}</pre>
+                  </div>
+                  <div class="contentBox-left-middle">
+                    <div class="contentBox-left-middle-imageBox">
+                      <img src="./image/形状 890 拷贝.png" alt="" />
+                      <p>{{pets.skill}}</p>
+                      <img src="./image/形状 890.png" alt="" />
+                    </div>
+                    <div class="middle-imageBox-skill">
+                      <template
+                        v-for="(index,skills) in pets.skillList"
+                        :key="index"
+                      >
+                        <img
+                          :src="skills.imgPath"
+                          alt=""
+                          @click="showSkills(skills)"
+                        />
+                        <div class="skills-content">{{skills.skillText}}</div>
+                      </template>
+                    </div>
+                  </div>
+                </div>
+                <div  v-if="pets.petId === CharactersId" class="Character-contentBox-right"></div>
+              </template>
+            </div>
+          </div>
           <div class="main-hear"></div>
         </div>
       </main>
@@ -119,7 +195,7 @@
     </div>
   </body>
   <script>
-    new Vue({
+    var vm = new Vue({
       el: '#app',
       data: {
         message: 'Hello Vue.js!',
@@ -151,6 +227,40 @@
             id: 5,
           },
         ],
+        activeGames: '宠物',
+        activeAllCharacter: [
+          {
+            petId: 1111,
+            petText: '所有',
+            activePetText: true,
+          },
+          {
+            petId: 1112,
+            petText: '史诗',
+            activePetText: false,
+          },
+          {
+            petId: 1113,
+            petText: '传说',
+            activePetText: false,
+          },
+          {
+            petId: 1114,
+            petText: '珍藏',
+            activePetText: false,
+          },
+          {
+            petId: 1115,
+            petText: '稀有',
+            activePetText: false,
+          },
+          {
+            petId: 1116,
+            petText: '普通',
+            activePetText: false,
+          },
+        ],
+        CharactersId: 1111,
         tabbarItems: [
           {
             imgPath: './image/img_btn_xunxiange02.png',
@@ -180,6 +290,7 @@
         newsTabbar: [
           {
             title: '最新',
+            active: true,
             content: [
               {
                 text: '1-1《幻灵修仙传》开启ios下载...',
@@ -210,6 +321,7 @@
           },
           {
             title: '新闻',
+            active: false,
             content: [
               {
                 text: '2-1《幻灵修仙传》开启ios下载...',
@@ -240,6 +352,7 @@
           },
           {
             title: '公告',
+            active: false,
             content: [
               {
                 text: '3-1《幻灵修仙传》开启ios下载...',
@@ -270,6 +383,7 @@
           },
           {
             title: '攻略',
+            active: false,
             content: [
               {
                 text: '4-1《幻灵修仙传》开启ios下载...',
@@ -299,11 +413,322 @@
             ],
           },
         ],
+        gamesContent: [
+          {
+            tabName: '宠物',
+            imagePath: './image/宠物 拷贝.png',
+            imageActivePath: './image/宠物.png',
+            imageActive: true,
+            allCharacter: [
+              {
+                petId: 1111,
+                petText: '所有',
+                activePetText: true,
+              },
+              {
+                petId: 1112,
+                petText: '史诗',
+                activePetText: false,
+              },
+              {
+                petId: 1113,
+                petText: '传说',
+                activePetText: false,
+              },
+              {
+                petId: 1114,
+                petText: '珍藏',
+                activePetText: false,
+              },
+              {
+                petId: 1115,
+                petText: '稀有',
+                activePetText: false,
+              },
+              {
+                petId: 1116,
+                petText: '普通',
+                activePetText: false,
+              },
+            ],
+          },
+          {
+            tabName: '天仙',
+            imagePath: './image/天仙(1).png',
+            imageActivePath: './image/天仙.png',
+            imageActive: false,
+            allCharacter: [
+              {
+                petId: 1117,
+                petText: '所有',
+                activePetText: true,
+              },
+              {
+                petId: 1118,
+                petText: '史诗',
+                activePetText: false,
+              },
+              {
+                petId: 1119,
+                petText: '传说',
+                activePetText: false,
+              },
+              {
+                petId: 1120,
+                petText: '珍藏',
+                activePetText: false,
+              },
+              {
+                petId: 1121,
+                petText: '稀有',
+                activePetText: false,
+              },
+              {
+                petId: 1122,
+                petText: '普通',
+                activePetText: false,
+              },
+            ],
+          },
+          {
+            tabName: '战神',
+            imagePath: './image/战神.png',
+            imageActivePath: './image/战神 拷贝.png',
+            imageActive: false,
+            allCharacter: [
+              {
+                petId: 1123,
+                petText: '所有',
+                activePetText: true,
+              },
+              {
+                petId: 1124,
+                petText: '史诗',
+                activePetText: false,
+              },
+              {
+                petId: 1125,
+                petText: '传说',
+                activePetText: false,
+              },
+              {
+                petId: 1126,
+                petText: '珍藏',
+                activePetText: false,
+              },
+              {
+                petId: 1127,
+                petText: '稀有',
+                activePetText: false,
+              },
+              {
+                petId: 1128,
+                petText: '普通',
+                activePetText: false,
+              },
+            ],
+          },
+          {
+            tabName: '英雄',
+            imagePath: './image/英雄.png',
+            imageActivePath: './image/英雄 拷贝.png',
+            imageActive: false,
+            allCharacter: [
+              {
+                petId: 1129,
+                petText: '所有',
+                activePetText: true,
+              },
+              {
+                petId: 1130,
+                petText: '史诗',
+                activePetText: false,
+              },
+              {
+                petId: 1131,
+                petText: '传说',
+                activePetText: false,
+              },
+              {
+                petId: 1132,
+                petText: '珍藏',
+                activePetText: false,
+              },
+              {
+                petId: 1133,
+                petText: '稀有',
+                activePetText: false,
+              },
+              {
+                petId: 1134,
+                petText: '普通',
+                activePetText: false,
+              },
+            ],
+          },
+        ],
+        gamesCharacter: [
+          {
+            petId: 1111,
+            title: '齐天大圣',
+            introduce: '宠物介绍',
+            introduceText:
+              '这里是一大段宠物介绍这里是一大段宠物介绍\n这里是一大段宠物介绍这里是一大段宠物介绍\n',
+            skill: '技能',
+            skillList: [
+              {
+                imgPath: './image/641054.jpg',
+                skillText:
+                  '【三打白骨精】对随机4个目标造成10%伤害，并附带2000点伤害，连续攻击相同目标3次（累计攻击系数30%+6000）',
+              },
+              {
+                imgPath: './image/641057.jpg',
+                skillText:
+                  '【斗战胜佛】攻击时，有10%概率增加，现有技能个数*5%的攻击力，最高30%',
+              },
+              {
+                imgPath: './image/641064.jpg',
+                skillText:
+                  '【火眼金睛】控制专精，如果齐天大圣学习有控制技能，则每次主动技能攻击均有概率触发，并使自身拥有控制技能的触发概率增加1.5倍',
+              },
+              {
+                imgPath: './image/660015.jpg',
+                skillText:
+                  '【挚友(羁绊)】混元同珠\n与哪吒齐上阵， 且战斗中保持存活， 两者暴击伤害各增加15%\n放肆桀骜\n与敖丙同时上阵， 且战斗中保持存活， 两者暴击伤害各增加15%\n诸神回避\n与哪吒.敖丙同时上阵， 且战斗中保持存活,三者暴击伤害各提升30%',
+              },
+            ],
+          },
+          {
+            petId: 1112,
+            title: '哪吒',
+            introduce: '宠物介绍',
+            introduceText:
+              '天地混元，怀胎三年，天赋根骨,道相生；叱咤风云，顶天立地，神通广大，我命由我不由天！',
+            skill: '技能',
+            skillList: [
+              {
+                imgPath: './image/641054.jpg',
+                skillText:
+                  '【我命不由天】对随机4个目标造成10%伤害，并附带2000点伤害，连续攻击相同目标3次（累计攻击系数30%+6000）',
+              },
+              {
+                imgPath: './image/641057.jpg',
+                skillText:
+                  '【九龙神火罩】攻击时，有10%概率增加，现有技能个数*5%的攻击力，最高30%',
+              },
+              {
+                imgPath: './image/641064.jpg',
+                skillText:
+                  '【一力破天】控制专精，如果齐天大圣学习有控制技能，则每次主动技能攻击均有概率触发，并使自身拥有控制技能的触发概率增加1.5倍',
+              },
+              {
+                imgPath: './image/660015.jpg',
+                skillText:
+                  '【挚友(羁绊)】混元同珠\n与哪吒齐上阵， 且战斗中保持存活， 两者暴击伤害各增加15%\n放肆桀骜\n与敖丙同时上阵， 且战斗中保持存活， 两者暴击伤害各增加15%\n诸神回避\n与哪吒.敖丙同时上阵， 且战斗中保持存活,三者暴击伤害各提升30%',
+              },
+            ],
+          },
+          {
+            petId: 1113,
+            title: '齐天大圣',
+            introduce: '宠物介绍',
+            introduceText:
+              '这里是一大段宠物介绍这里是一大段宠物介绍\n这里是一大段宠物介绍这里是一大段宠物介绍\n',
+            skill: '技能',
+            skillList: [
+              {
+                imgPath: './image/641054.jpg',
+                skillText:
+                  '【三打白骨精】对随机4个目标造成10%伤害，并附带2000点伤害，连续攻击相同目标3次（累计攻击系数30%+6000）',
+              },
+              {
+                imgPath: './image/641057.jpg',
+                skillText:
+                  '【斗战胜佛】攻击时，有10%概率增加，现有技能个数*5%的攻击力，最高30%',
+              },
+              {
+                imgPath: './image/641064.jpg',
+                skillText:
+                  '【火眼金睛】控制专精，如果齐天大圣学习有控制技能，则每次主动技能攻击均有概率触发，并使自身拥有控制技能的触发概率增加1.5倍',
+              },
+              {
+                imgPath: './image/660015.jpg',
+                skillText:
+                  '【挚友(羁绊)】混元同珠\n与哪吒齐上阵， 且战斗中保持存活， 两者暴击伤害各增加15%\n放肆桀骜\n与敖丙同时上阵， 且战斗中保持存活， 两者暴击伤害各增加15%\n诸神回避\n与哪吒.敖丙同时上阵， 且战斗中保持存活,三者暴击伤害各提升30%',
+              },
+            ],
+          },
+          {
+            petId: 1114,
+            title: '齐天大圣',
+            introduce: '宠物介绍',
+            introduceText:
+              '这里是一大段宠物介绍这里是一大段宠物介绍\n这里是一大段宠物介绍这里是一大段宠物介绍\n',
+            skill: '技能',
+            skillList: [
+              {
+                imgPath: './image/641054.jpg',
+                skillText:
+                  '【三打白骨精】对随机4个目标造成10%伤害，并附带2000点伤害，连续攻击相同目标3次（累计攻击系数30%+6000）',
+              },
+              {
+                imgPath: './image/641057.jpg',
+                skillText:
+                  '【斗战胜佛】攻击时，有10%概率增加，现有技能个数*5%的攻击力，最高30%',
+              },
+              {
+                imgPath: './image/641064.jpg',
+                skillText:
+                  '【火眼金睛】控制专精，如果齐天大圣学习有控制技能，则每次主动技能攻击均有概率触发，并使自身拥有控制技能的触发概率增加1.5倍',
+              },
+              {
+                imgPath: './image/660015.jpg',
+                skillText:
+                  '【挚友(羁绊)】混元同珠\n与哪吒齐上阵， 且战斗中保持存活， 两者暴击伤害各增加15%\n放肆桀骜\n与敖丙同时上阵， 且战斗中保持存活， 两者暴击伤害各增加15%\n诸神回避\n与哪吒.敖丙同时上阵， 且战斗中保持存活,三者暴击伤害各提升30%',
+              },
+            ],
+          },
+        ],
       },
       methods: {
-        changeTab(tabs, contents) {
-          this.activeTabs = tabs
-          this.activeContent = contents
+        changeTab(news) {
+          if (this.activeTabs !== news.title) {
+            this.newsTabbar.forEach((item) => {
+              item.active = false
+            })
+            this.activeTabs = news.title
+            news.active = true
+            this.activeContent = news.content
+          }
+        },
+        changeGamesTab(games) {
+          if (this.activeGames !== games.tabName) {
+            this.gamesContent.forEach((item) => {
+              item.imageActive = false
+            })
+            this.activeGames = games.tabName
+            games.imageActive = true
+            console.log(this.gamesContent)
+            this.activeAllCharacter = games.allCharacter
+          }
+        },
+        changeCharacter(Characters) {
+          if (this.CharactersId !== Characters.petId) {
+            this.activeAllCharacter.forEach((item) => {
+              item.activePetText = false
+            })
+            this.CharactersId = Characters.petId
+            console.log(Characters)
+            Characters.activePetText = true
+          }
+        },
+        showSkills(active) {
+          console.log(active)
+        },
+      },
+      watch: {
+        CharactersId: function (val, oldVal) {
+          console.log('new: %s, old: %s', val, oldVal)
         },
       },
     })

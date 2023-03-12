@@ -5,14 +5,15 @@ main {
       background-image: url('http://hlgw.tianzongnet.com/static/home/images/pageimg/center.png');
       background-repeat: round;
       height: 0.5333rem;
+      background-size: contain;
     }
     .main-news {
-      img {
-        width: 0.8rem;
-      }
       .news-title {
         display: flex;
         justify-content: center;
+        img {
+          width: 0.8rem;
+        }
       }
       .news-content {
         .swiper {
@@ -26,6 +27,7 @@ main {
               height: 0.48rem;
               background-image: url(../image/新闻资讯面板.png);
               background-repeat: round;
+              background-size: contain;
               position: relative;
               display: flex;
               align-items: center;
@@ -47,16 +49,12 @@ main {
           display: flex;
           justify-content: space-evenly;
           align-items: center;
-          :hover {
-            background-color: rgb(242, 97, 0);
-            color: white !important;
-            border: 1px solid rgb(242, 97, 0) !important;
-          }
+
           .tabs {
             width: 0.1333rem;
             height: 0.0533rem;
             color: rgb(242, 97, 0);
-            border: 1px solid rgb(131, 77, 53);
+            border: 0.0027rem solid rgb(131, 77, 53);
             border-radius: 0.0267rem;
             display: flex;
             align-items: center;
@@ -66,24 +64,141 @@ main {
             }
           }
         }
-        .news-tabbar-text { 
+        .news-tabbar-text {
           display: flex;
           flex-direction: column;
           align-items: center;
-          margin: 20px 0;
+          margin: 0.0533rem 0;
           // border-bottom: 1px dashed rgb(232, 152, 110);
           .news-tabbar-text-box {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 0;
-            border-bottom: 1px dashed #e8986e;
+            padding: 0.0267rem 0;
+            border-bottom: 0.0027rem dashed #e8986e;
             width: 0.9rem;
             p {
               color: rgb(232, 152, 110);
               font-size: 0.032rem;
             }
           }
+        }
+      }
+    }
+    .main-games {
+      .games-title {
+        display: flex;
+        justify-content: center;
+        img {
+          width: 0.8rem;
+        }
+      }
+      .games-content {
+        display: flex;
+        justify-content: space-evenly;
+        .games-content-imgage {
+          img {
+            width: 0.24rem;
+          }
+        }
+      }
+      .games-content-Character {
+        display: flex;
+        justify-content: space-around;
+        margin: 0.0267rem 0;
+        .Character-box {
+          position: relative;
+          img {
+            height: 0.0533rem;
+            width: 0.1333rem;
+          }
+          p {
+            font-size: 0.032rem;
+            color: #e8986e;
+            position: absolute;
+            top: 0.0107rem;
+            left: 0.035rem;
+          }
+        }
+      }
+      .Character-contentBox {
+        background-image: url(../image/图鉴面板.png);
+        background-size: contain;
+        background-repeat: round;
+        height: 0.6667rem;
+        background-position: 0.1013rem 0.0267rem;
+        display: flex;
+        justify-content: center;
+        .Character-contentBox-left {
+          .contentBox-left-top {
+            .contentBox-left-image {
+              display: flex;
+              justify-content: center;
+              position: relative;
+              align-items: center;
+              padding: 0.0533rem 0;
+              border-bottom: 0.0027rem solid rgb(176, 76, 19);
+              img {
+                width: 0.4rem;
+              }
+              P {
+                font-size: 0.032rem;
+                position: absolute;
+                color: rgb(166, 56, 23);
+              }
+              pre {
+                font-size: 0.032rem;
+              }
+            }
+          }
+          .contentBox-left-middle {
+            width: 0.5333rem;
+            display: flex;
+            flex-direction: column;
+            .contentBox-left-middle-imageBox {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              margin: 0.0267rem 0;
+              img {
+                height: 0.0533rem;
+              }
+              p {
+                font-size: 0.032rem;
+                padding: 0 0.0267rem;
+                color: rgb(176, 76, 19);
+              }
+            }
+            .middle-imageBox-skill {
+              display: flex;
+              width: 0.8rem;
+              position: relative;
+              img {
+                width: 0.08rem;
+                border-radius: 50%;
+                padding: 0 0.0267rem;
+              }
+              .skills-content {
+                display: none;
+                position: absolute;
+                font-size: 0.032rem;
+                background-image: url(../image/下载信息底板.png);
+                background-repeat: round;
+                padding: 0.0533rem;
+              }
+              img:hover + .skills-content {
+                display: block;
+              }
+            }
+            pre {
+              font-size: 0.032rem;
+              white-space: pre-wrap;
+              color: rgb(216, 160, 128);
+            }
+          }
+        }
+        .Character-contentBox-right {
+          width: 0.8rem;
         }
       }
     }
@@ -96,4 +211,13 @@ main {
   background-color: #e97a35;
   width: 0.08rem;
   border-radius: 0.0267rem;
+}
+.active {
+  background-color: rgb(242, 97, 0);
+  color: white !important;
+  border: 0.0027rem solid rgb(242, 97, 0) !important;
+}
+
+.CharacterActive {
+  color: white !important;
 }

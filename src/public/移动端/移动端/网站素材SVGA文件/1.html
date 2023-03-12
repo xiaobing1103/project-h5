@@ -16,27 +16,26 @@
     var player = new SVGA.Player('#demo')
     var parser = new SVGA.Parser('#demo')
     var arr = []
-    for(let i =1; i<= 14;i++){
+    for (let i = 1; i <= 14; i++) {
       arr.push(`./pet130${i}_s.svga`)
     }
-    
-  
-svga = 'pet1301_s.svga'
+
+    svga = 'pet1301_s.svga'
     parser.load(svga, function (item) {
       player.setContentMode()
       player.setVideoItem(item)
       player.startAnimation()
     })
-    var flag = 0;
+    var flag = 0
     function a() {
-// arr[number]
-// debugger
-flag++
-      if(flag>=14){
+      // arr[number]
+      // debugger
+      flag++
+      if (flag >= 14) {
         flag = 0
       }
       svga = arr[flag]
-        // svga == './pet1302_s.svga' ? './pet1303_s.svga' : './pet1302_s.svga'
+      // svga == './pet1302_s.svga' ? './pet1303_s.svga' : './pet1302_s.svga'
       parser.load(svga, function (item) {
         player.setVideoItem(item)
         player.startAnimation()
