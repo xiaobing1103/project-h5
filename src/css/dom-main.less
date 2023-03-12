@@ -122,11 +122,10 @@ main {
         }
       }
       .Character-contentBox {
-        background-image: url(../image/图鉴面板.png);
-        background-size: contain;
-        background-repeat: round;
-        height: 0.6667rem;
-        background-position: 0.1013rem 0.0267rem;
+        background-image: url(../image/图鉴面板@2x.png);
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        height: 0.65rem;
         display: flex;
         justify-content: center;
         .Character-contentBox-left {
@@ -136,7 +135,7 @@ main {
               justify-content: center;
               position: relative;
               align-items: center;
-              padding: 0.0533rem 0;
+              padding: 0.0267rem 0;
               border-bottom: 0.0027rem solid rgb(176, 76, 19);
               img {
                 width: 0.4rem;
@@ -159,7 +158,7 @@ main {
               display: flex;
               justify-content: center;
               align-items: center;
-              margin: 0.0267rem 0;
+              margin: 0.0133rem 0;
               img {
                 height: 0.0533rem;
               }
@@ -171,7 +170,7 @@ main {
             }
             .middle-imageBox-skill {
               display: flex;
-              width: 0.8rem;
+              // width: 0.8rem;
               position: relative;
               img {
                 width: 0.08rem;
@@ -192,7 +191,11 @@ main {
             }
             pre {
               font-size: 0.032rem;
-              white-space: pre-wrap;
+              overflow: hidden;
+              -webkit-box-orient: vertical;
+              -webkit-line-clamp: 2;
+              text-overflow: ellipsis;
+              white-space: nowrap;
               color: rgb(216, 160, 128);
             }
           }
