@@ -129,13 +129,14 @@ main {
         display: flex;
         justify-content: center;
         .Character-contentBox-left {
+          padding: 10px;
           .contentBox-left-top {
             .contentBox-left-image {
               display: flex;
               justify-content: center;
               position: relative;
               align-items: center;
-              padding: 0.0267rem 0;
+              padding: 0.0533rem 0;
               border-bottom: 0.0027rem solid rgb(176, 76, 19);
               img {
                 width: 0.4rem;
@@ -158,7 +159,7 @@ main {
               display: flex;
               justify-content: center;
               align-items: center;
-              margin: 0.0133rem 0;
+              margin: 0.0267rem 0;
               img {
                 height: 0.0533rem;
               }
@@ -192,16 +193,25 @@ main {
             pre {
               font-size: 0.032rem;
               overflow: hidden;
-              -webkit-box-orient: vertical;
-              -webkit-line-clamp: 2;
+              // -webkit-box-orient: vertical;
+              // -webkit-line-clamp: 2;
               text-overflow: ellipsis;
-              white-space: nowrap;
+              // white-space: nowrap;
               color: rgb(216, 160, 128);
             }
           }
         }
         .Character-contentBox-right {
-          width: 0.8rem;
+
+          display: contents;
+          .svagBox {
+            // position: absolute;
+            width: 0.8rem;
+            overflow: hidden;
+            .canvas{
+              width: 0.2667rem;
+            }
+          }
         }
       }
     }
