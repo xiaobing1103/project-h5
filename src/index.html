@@ -117,7 +117,7 @@
             </div>
             <div class="games-content">
               <template v-for="(index,gamesTab) in gamesContent" :key="index">
-                <div class="games-content-imgage" v-ref:myImage>
+                <div class="games-content-imgage">
                   <img
                     @click="changeGamesTab(gamesTab)"
                     :src="gamesTab.imageActive ? gamesTab.imageActivePath : gamesTab.imagePath"
@@ -163,7 +163,7 @@
                     </div>
 
                     <pre :title="{{pets.introduceText}}">
-{{pets.introduceText}}</pre
+            {{pets.introduceText}}</pre
                     >
                   </div>
                   <div class="contentBox-left-middle">
@@ -191,11 +191,7 @@
                   v-if="pets.petId === CharactersId"
                   class="Character-contentBox-right"
                 >
-                  <div
-                    v-el:svga
-                    :src="pets.svag"
-                    class="svagBox"
-                  ></div>
+                  <div v-el:svga :src="pets.svag" class="svagBox"></div>
                 </div>
               </template>
             </div>
@@ -769,7 +765,7 @@
           },
           {
             petId: 1117,
-            svag: './svga/pet1306_s.svga',
+            svag: './svga/pet1307_s.svga',
             title: '朱雀',
             introduce: '宠物介绍',
             introduceText:
@@ -800,7 +796,7 @@
           },
           {
             petId: 1118,
-            svag: './svga/pet1306_s.svga',
+            svag: './svga/pet1308_s.svga',
             title: '朱雀',
             introduce: '宠物介绍',
             introduceText:
@@ -831,7 +827,7 @@
           },
           {
             petId: 1119,
-            svag: './svga/pet1306_s.svga',
+            svag: './svga/pet1309_s.svga',
             title: '朱雀',
             introduce: '宠物介绍',
             introduceText:
@@ -862,7 +858,7 @@
           },
           {
             petId: 1120,
-            svag: './svga/pet1306_s.svga',
+            svag: './svga/pet1310_s.svga',
             title: '朱雀',
             introduce: '宠物介绍',
             introduceText:
@@ -893,7 +889,7 @@
           },
           {
             petId: 1121,
-            svag: './svga/pet1306_s.svga',
+            svag: './svga/pet1311_s.svga',
             title: '朱雀',
             introduce: '宠物介绍',
             introduceText:
@@ -924,7 +920,7 @@
           },
           {
             petId: 1122,
-            svag: './svga/pet1306_s.svga',
+            svag: './svga/pet1312_s.svga',
             title: '朱雀',
             introduce: '宠物介绍',
             introduceText:
@@ -955,7 +951,7 @@
           },
           {
             petId: 1123,
-            svag: './svga/pet1306_s.svga',
+            svag: './svga/pet1313_s.svga',
             title: '朱雀',
             introduce: '宠物介绍',
             introduceText:
@@ -986,7 +982,7 @@
           },
           {
             petId: 1124,
-            svag: './svga/pet1306_s.svga',
+            svag: './svga/pet1314_s.svga',
             title: '朱雀',
             introduce: '宠物介绍',
             introduceText:
@@ -1017,7 +1013,7 @@
           },
           {
             petId: 1125,
-            svag: './svga/pet1306_s.svga',
+            svag: './svga/pet1301_s.svga',
             title: '朱雀',
             introduce: '宠物介绍',
             introduceText:
@@ -1048,7 +1044,7 @@
           },
           {
             petId: 1126,
-            svag: './svga/pet1306_s.svga',
+            svag: './svga/pet1302_s.svga',
             title: '朱雀',
             introduce: '宠物介绍',
             introduceText:
@@ -1079,7 +1075,7 @@
           },
           {
             petId: 1127,
-            svag: './svga/pet1306_s.svga',
+            svag: './svga/pet1303_s.svga',
             title: '朱雀',
             introduce: '宠物介绍',
             introduceText:
@@ -1110,7 +1106,7 @@
           },
           {
             petId: 1128,
-            svag: './svga/pet1306_s.svga',
+            svag: './svga/pet1304_s.svga',
             title: '朱雀',
             introduce: '宠物介绍',
             introduceText:
@@ -1141,7 +1137,7 @@
           },
           {
             petId: 1129,
-            svag: './svga/pet1306_s.svga',
+            svag: './svga/pet1305_s.svga',
             title: '朱雀',
             introduce: '宠物介绍',
             introduceText:
@@ -1203,7 +1199,7 @@
           },
           {
             petId: 1131,
-            svag: './svga/pet1306_s.svga',
+            svag: './svga/pet1307_s.svga',
             title: '朱雀',
             introduce: '宠物介绍',
             introduceText:
@@ -1234,7 +1230,7 @@
           },
           {
             petId: 1132,
-            svag: './svga/pet1306_s.svga',
+            svag: './svga/pet1308_s.svga',
             title: '朱雀',
             introduce: '宠物介绍',
             introduceText:
@@ -1265,7 +1261,7 @@
           },
           {
             petId: 1133,
-            svag: './svga/pet1306_s.svga',
+            svag: './svga/pet1309_s.svga',
             title: '朱雀',
             introduce: '宠物介绍',
             introduceText:
@@ -1296,7 +1292,7 @@
           },
           {
             petId: 1134,
-            svag: './svga/pet1306_s.svga',
+            svag: './svga/pet1310_s.svga',
             title: '朱雀',
             introduce: '宠物介绍',
             introduceText:
@@ -1327,7 +1323,7 @@
           },
           {
             petId: 1135,
-            svag: './svga/pet1306_s.svga',
+            svag: './svga/pet1311_s.svga',
             title: '朱雀',
             introduce: '宠物介绍',
             introduceText:
@@ -1358,7 +1354,7 @@
           },
           {
             petId: 1136,
-            svag: './svga/pet1306_s.svga',
+            svag: './svga/pet1312_s.svga',
             title: '朱雀',
             introduce: '宠物介绍',
             introduceText:
@@ -1389,7 +1385,7 @@
           },
           {
             petId: 1137,
-            svag: './svga/pet1306_s.svga',
+            svag: './svga/pet1313_s.svga',
             title: '朱雀',
             introduce: '宠物介绍',
             introduceText:
@@ -1420,7 +1416,7 @@
           },
           {
             petId: 1138,
-            svag: './svga/pet1306_s.svga',
+            svag: './svga/pet1314_s.svga',
             title: '朱雀',
             introduce: '宠物介绍',
             introduceText:
@@ -1511,7 +1507,6 @@
               },
             ],
           },
-
         ],
       },
       methods: {
@@ -1532,7 +1527,7 @@
             })
             this.activeGames = games.tabName
             games.imageActive = true
-            console.log(this.gamesContent)
+            // console.log(this.gamesContent)
             this.activeAllCharacter = games.allCharacter
           }
         },
@@ -1542,7 +1537,7 @@
               item.activePetText = false
             })
             this.CharactersId = Characters.petId
-            console.log(Characters)
+            // console.log(Characters)
             Characters.activePetText = true
           }
         },
@@ -1551,21 +1546,24 @@
         },
       },
       watch: {
-        CharactersId: function (val, oldVal) {
-          console.log('new: %s, old: %s', val, oldVal)
-        },
-
-        SVGA: function (val, oldVal) {
-          console.log('new: %s, old: %s', val, oldVal)
-        },
-      },
-      ready: function () {
-        // new SVGA.autoload(this.$els.svga)
-        this.$watch('CharactersId', function (newVal, oldVal) {
+        CharactersId: function (newVal, oldVal) {
           if (newVal !== oldVal) {
             this.SVGA = new SVGA.autoload(this.$els.svga)
           }
-        })
+        },
+        activeAllCharacter: function (val, oldVal) {
+          console.log(val)
+          val.forEach((item) => {
+            if (item.activePetText) {
+              this.CharactersId = item.petId
+            }
+          })
+          this.$nextTick(() => {
+            this.SVGA = new SVGA.autoload(this.$els.svga)
+          })
+        },
+      },
+      ready: function () {
         this.SVGA = new SVGA.autoload(this.$els.svga)
       },
     })
